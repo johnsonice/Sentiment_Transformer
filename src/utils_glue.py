@@ -99,6 +99,11 @@ class AivProcessor(DataProcessor):
         """See base class."""
         return self._create_examples(
             self._read_tsv(os.path.join(data_dir, "dev.tsv")), "dev")
+        
+    def get_custom_examples(self,file_path):
+        """Load custom file"""
+        return self._create_examples(
+            self._read_tsv(file_path), "dev")
 
     def get_labels(self):
         """See base class."""
