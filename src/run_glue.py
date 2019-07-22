@@ -288,7 +288,7 @@ if __name__ == "__main__":
                         help="Path to pre-trained model or shortcut name selected in the list: " + ", ".join(ALL_MODELS))
     parser.add_argument("--task_name", default="AIV", type=str, required=False,
                         help="The name of the task to train selected in the list: " + ", ".join(processors.keys()))
-    parser.add_argument("--output_dir", default="data/model_weights/AIV/", type=str, required=False,
+    parser.add_argument("--output_dir", default="../data/model_weights/AIV/", type=str, required=False,
                         help="The output directory where the model predictions and checkpoints will be written.")
     
 
@@ -341,8 +341,12 @@ if __name__ == "__main__":
                         help="Epsilon for Adam optimizer.")
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
                         help="Max gradient norm.")
-    parser.add_argument("--num_train_epochs", default=3.0, type=float,
+    
+    ##################################################################################
+    parser.add_argument("--num_train_epochs", default=7.0, type=float,
                         help="Total number of training epochs to perform.")
+    ##################################################################################
+    
     parser.add_argument("--max_steps", default=-1, type=int,
                         help="If > 0: set total number of training steps to perform. Override num_train_epochs.")
     parser.add_argument("--warmup_steps", default=0, type=int,
