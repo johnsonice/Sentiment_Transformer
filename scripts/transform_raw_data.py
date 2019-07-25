@@ -27,6 +27,8 @@ if __name__ == "__main__":
     arr = df.index.to_numpy()
     out = np.random.permutation(arr) # random shuffle
     df = df.loc[out]
+    ## turn labels to int
+    df['Yoko_new'] = df['Yoko_new'].astype(int)
     #%%
     n_train = int(len(df)*0.0)   ## change the ratio
     n_dev = int(len(df)*1.0)     ## change the ratio
