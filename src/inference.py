@@ -61,8 +61,11 @@ if __name__ == "__main__":
     task = 'AIV'
     eval_task = task.lower()
     data_dir = '../data/authority_views/'
+    ##########################################################
+    # specify file names
     test_file_path = os.path.join(data_dir,'train.tsv')
     res_file_path = os.path.join(data_dir,'train_results.csv')
+    ##########################################################
     output_mode = output_modes[task.lower()]
     batch_size = 8
     ## set model cuda setting
@@ -107,7 +110,7 @@ if __name__ == "__main__":
         with torch.no_grad():
             outputs = model(**inputs)
             tmp_eval_loss, logits = outputs[:2]
-            probs = F.softmax(logits,dim=0)
+            probs = F.softmax(logits,dim=1)
             values, max_id = torch.max(logits, dim=1)
             
         if preds_logits is None:
@@ -126,11 +129,19 @@ if __name__ == "__main__":
     
     #%%
     ## organize output formate 
+    p0,p1,p2,p3 = map(list, zip(*preds_probs))
+    
+    #%%
     true_ids = [id2label_map[i] for i in out_label_ids]
     pred_ids = [id2label_map[i] for i in pred_label_ids]
     org_text = [e.text_a for e in examples]
-    output_data = zip(org_text,true_ids,preds_probs,pred_ids)
-    df = pd.DataFrame(output_data,columns=['text','true_labels','probs','pred_ids'])
+    output_data = zip(org_text,true_ids,p0,p1,p2,p3,pred_ids)
+    df = pd.DataFrame(output_data,columns=['text','true_labels',
+                                           id2label_map[0],
+                                           id2label_map[1],
+                                           id2label_map[2],
+                                           id2label_map[3],
+                                           'pred_ids'])
     df.to_csv(res_file_path,encoding='utf8')
     check = df['true_labels'] == df['pred_ids']
     accuracy = sum(check)/len(check)
