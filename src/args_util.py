@@ -57,7 +57,7 @@ def parse_args():
                         help="Whether to run eval on the dev set.")
     parser.add_argument("--evaluate_during_training", action='store_true',
                         help="Rul evaluation during training at each logging step.")
-    parser.add_argument("--do_lower_case", action='store_true', default =True,
+    parser.add_argument("--do_lower_case", action='store_true', default =True,   ## based on cased or uncased, chagne this 
                         help="Set this flag if you are using an uncased model.")
 
 ################################################
@@ -77,7 +77,7 @@ def parse_args():
                         help="Max gradient norm.")
     
     ##################################################################################
-    parser.add_argument("--num_train_epochs", default=7.0, type=float,
+    parser.add_argument("--num_train_epochs", default=6.0, type=float,
                         help="Total number of training epochs to perform.")
     ##################################################################################
     
@@ -85,10 +85,9 @@ def parse_args():
                         help="If > 0: set total number of training steps to perform. Override num_train_epochs.")
     parser.add_argument("--warmup_steps", default=0, type=int,
                         help="Linear warmup over warmup_steps.")
-
     parser.add_argument('--logging_steps', type=int, default=50,
                         help="Log every X updates steps.")
-    parser.add_argument('--save_steps', type=int, default=50,
+    parser.add_argument('--save_steps', type=int, default=50, ## changed from 50 to 200
                         help="Save checkpoint every X updates steps.")
     parser.add_argument("--eval_all_checkpoints", action='store_true',
                         help="Evaluate all checkpoints starting with the same prefix as model_name ending and ending with step number")
@@ -100,7 +99,7 @@ def parse_args():
                         help="Overwrite the content of the output directory")
     ###################################################################################
     
-    parser.add_argument('--overwrite_cache', action='store_true',
+    parser.add_argument('--overwrite_cache', action='store_true', default=False,  ## set overwrite to default
                         help="Overwrite the cached training and evaluation sets")
     parser.add_argument('--seed', type=int, default=42,
                         help="random seed for initialization")

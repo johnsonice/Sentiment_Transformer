@@ -63,8 +63,8 @@ if __name__ == "__main__":
     data_dir = '../data/authority_views/'
     ##########################################################
     # specify file names
-    test_file_path = os.path.join(data_dir,'train.tsv')
-    res_file_path = os.path.join(data_dir,'train_results.csv')
+    test_file_path = os.path.join(data_dir,'test.tsv')
+    res_file_path = os.path.join(data_dir,'test_results.csv')
     ##########################################################
     output_mode = output_modes[task.lower()]
     batch_size = 8

@@ -18,30 +18,36 @@ import os
 if __name__ == "__main__":
     #raw_data = "/home/chengyu/Dev/Sentiment_Transformer/data/authority_views/Authorities Views 20190703_Yoko_Chengyu_Harry_Comp.xlsx"
     #raw_data = "../data/authority_views/Authorities Views_training_v2.xlsx"
-    raw_data = "../data/authority_views/Authorities Views_best_test.xlsx"
+    raw_data = "../data/authority_views/Test.xlsx"
     
     df = pd.read_excel(raw_data)
-    df = df[['paragraph','Yoko_new']]
-    df['filter'] = df['Yoko_new'].map(lambda x: x in [-1,1,0,999])
-    df= df[df['filter']][['paragraph','Yoko_new']]
+    #%%
+    label_column = 'label'
+    text_column = 'paragraph'
+    
+    df = df[[text_column,label_column]]
+    df[text_column] = df[text_column].str.replace('^[\d]+.\s','') ## clear begaining 
+    #%%
+    df['filter'] = df[label_column].map(lambda x: x in [-1,1,0,999])
+    df= df[df['filter']][[text_column,label_column]]
     arr = df.index.to_numpy()
     out = np.random.permutation(arr) # random shuffle
     df = df.loc[out]
     ## turn labels to int
-    df['Yoko_new'] = df['Yoko_new'].astype(int)
+    df[label_column] = df[label_column].astype(int)
     #%%
-    n_train = int(len(df)*0.0)   ## change the ratio
-    n_dev = int(len(df)*1.0)     ## change the ratio
-    n_test = len(df) - n_train - n_dev
-    #%%
-    df_train = df[:n_train]
-    df_dev = df[n_train:n_train+n_dev]
-    df_test = df[-n_test:]
+    ## if you want to split train and test 
+#    n_train = int(len(df)*0.0)   ## change the ratio
+#    n_dev = int(len(df)*1.0)     ## change the ratio
+#    n_test = len(df) - n_train - n_dev
+#    #%%
+#    df_train = df[:n_train]
+#    df_dev = df[n_train:n_train+n_dev]
+#    df_test = df[-n_test:]
     #%%
     ## export 
     out_folder = "../data/authority_views"
-    
     #df_train.to_csv(os.path.join(out_folder,'train.tsv'),index=False,sep='\t')
-    df_dev.to_csv(os.path.join(out_folder,'dev.tsv'),index=False,sep='\t')
+    df.to_csv(os.path.join(out_folder,'test.tsv'),index=False,sep='\t')
     #df_test.to_csv(os.path.join(out_folder,'test.tsv'),index=False,sep='\t')
     
