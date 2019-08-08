@@ -18,7 +18,7 @@ import os
 if __name__ == "__main__":
     #raw_data = "/home/chengyu/Dev/Sentiment_Transformer/data/authority_views/Authorities Views 20190703_Yoko_Chengyu_Harry_Comp.xlsx"
     #raw_data = "../data/authority_views/Authorities Views_training_v2.xlsx"
-    data_type = 'test'
+    data_type = 'train'
     
     raw_data = "../data/authority_views/{}.xlsx".format(data_type)
     
