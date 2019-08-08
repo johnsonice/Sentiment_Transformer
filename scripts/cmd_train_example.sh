@@ -12,12 +12,13 @@ python run_glue.py \
 --data_dir $DATA_DIR/  \
 --output_dir ../data/model_weights/AIV/ \
 --save_steps 50 \
---num_train_epochs 10.0 \
+--num_train_epochs 8.0 \
 --do_lower_case \
---learning_rate 2e-5 \
+--learning_rate 3e-5 \
 --max_seq_length=256 \
 --evaluate_during_training \
 --eval_all_checkpoints
+
 #--per_gpu_eval_batch_size=8   \
 #--per_gpu_train_batch_size=8   \
 

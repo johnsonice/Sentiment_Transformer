@@ -18,7 +18,9 @@ import os
 if __name__ == "__main__":
     #raw_data = "/home/chengyu/Dev/Sentiment_Transformer/data/authority_views/Authorities Views 20190703_Yoko_Chengyu_Harry_Comp.xlsx"
     #raw_data = "../data/authority_views/Authorities Views_training_v2.xlsx"
-    raw_data = "../data/authority_views/Test.xlsx"
+    data_type = 'test'
+    
+    raw_data = "../data/authority_views/{}.xlsx".format(data_type)
     
     df = pd.read_excel(raw_data)
     #%%
@@ -48,6 +50,6 @@ if __name__ == "__main__":
     ## export 
     out_folder = "../data/authority_views"
     #df_train.to_csv(os.path.join(out_folder,'train.tsv'),index=False,sep='\t')
-    df.to_csv(os.path.join(out_folder,'test.tsv'),index=False,sep='\t')
+    df.to_csv(os.path.join(out_folder,'{}.tsv'.format(data_type)),index=False,sep='\t')
     #df_test.to_csv(os.path.join(out_folder,'test.tsv'),index=False,sep='\t')
     
