@@ -18,9 +18,9 @@ import os
 if __name__ == "__main__":
     #raw_data = "/home/chengyu/Dev/Sentiment_Transformer/data/authority_views/Authorities Views 20190703_Yoko_Chengyu_Harry_Comp.xlsx"
     #raw_data = "../data/authority_views/Authorities Views_training_v2.xlsx"
-    file_name = 'Topic_Series_20190807'
-    raw_data = "../data/authority_views/{}.csv".format(file_name)
-    df = pd.read_csv(raw_data)
+    file_name = 'authorities_views'
+    raw_data = "../data/authority_views/{}.xlsx".format(file_name)
+    df = pd.read_excel(raw_data)
     #%%
     ## specify data column name
     text_column = 'text'
