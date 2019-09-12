@@ -13,12 +13,21 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import os
 
+def front_truncate(sentence,max_len=200):
+    sen = sentence.split()
+    l_sen = len(sen)
+    if l_sen>max_len:
+        sen = sen[-max_len:]
+    
+    sen = " ".join(sen)
+    return sen
+    
 #%%
 
 if __name__ == "__main__":
     #raw_data = "/home/chengyu/Dev/Sentiment_Transformer/data/authority_views/Authorities Views 20190703_Yoko_Chengyu_Harry_Comp.xlsx"
     #raw_data = "../data/authority_views/Authorities Views_training_v2.xlsx"
-    for data_type in ['train','dev','test','BUFF']:
+    for data_type in ['train','dev','test','test_buff']:
         #data_type = 'train'
         #data_type = 'authorities_views'
         raw_data = "../data/authority_views/{}.xlsx".format(data_type)
@@ -30,6 +39,8 @@ if __name__ == "__main__":
         
         df = df[[text_column,label_column]]
         df[text_column] = df[text_column].str.replace('^[\d]+.\s','') ## clear begaining 
+#        if 'buff' in data_type.lower():
+#            df[text_column] = df[text_column].apply(front_truncate)
         #%%
         df['filter'] = df[label_column].map(lambda x: x in [-1,1,0,999])
         df= df[df['filter']][[text_column,label_column]]

@@ -171,6 +171,10 @@ def main():
                         type=int,
                         default=42,
                         help="random seed for initialization")
+    parser.add_argument('--save_every_steps',
+                        type=int,
+                        default=42,
+                        help="save evey n steps")
     args = parser.parse_args()
 
     assert args.pregenerated_data.is_dir(), \
@@ -318,7 +322,12 @@ def main():
                     optimizer.step()
                     optimizer.zero_grad()
                     global_step += 1
-
+                
+                # save model every n steps
+                if global_step % args.save_every_steps == 0:
+                    logging.info("** ** * Saving fine-tuned model on step {}** ** * ".format(global_step))
+                    model.save_pretrained(args.output_dir)
+                    tokenizer.save_pretrained(args.output_dir)
     # Save a trained model
         # save for every epoch
         if  n_gpu > 1 and torch.distributed.get_rank() == 0  or n_gpu <=1 :

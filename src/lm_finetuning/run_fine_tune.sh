@@ -7,3 +7,4 @@ python finetune_on_pregenerated.py \
 --output_dir $DATA/finetuned_lm/ \
 --epochs 3 \
 --train_batch_size 8 \
+--save_every_steps 2000 \

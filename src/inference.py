@@ -59,7 +59,7 @@ if __name__ == "__main__":
     ## load all args 
     args = parse_args()
     task = 'AIV'
-    mode = 'inference'# or inference
+    mode = 'test'# or inference
     eval_task = task.lower()
     data_dir = '../data/authority_views/'
     ##########################################################
@@ -68,8 +68,8 @@ if __name__ == "__main__":
         test_file_path = os.path.join(data_dir,'authorities_views.tsv')
         res_file_path = os.path.join(data_dir,'authorities_views.csv')
     else:
-        test_file_path = os.path.join(data_dir,'dev.tsv')
-        res_file_path = os.path.join(data_dir,'dev.csv')
+        test_file_path = os.path.join(data_dir,'test_buff.tsv')
+        res_file_path = os.path.join(data_dir,'test_buff.csv')
     ##########################################################
     output_mode = output_modes[task.lower()]
     batch_size = 8
