@@ -5,4 +5,5 @@ python finetune_on_pregenerated.py \
 --bert_model bert-base-uncased \
 --do_lower_case \
 --output_dir $DATA/finetuned_lm/ \
---epochs 3 
+--epochs 3 \
+--train_batch_size 8 \

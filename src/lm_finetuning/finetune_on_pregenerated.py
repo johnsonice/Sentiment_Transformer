@@ -320,10 +320,11 @@ def main():
                     global_step += 1
 
     # Save a trained model
-    if  n_gpu > 1 and torch.distributed.get_rank() == 0  or n_gpu <=1 :
-        logging.info("** ** * Saving fine-tuned model ** ** * ")
-        model.save_pretrained(args.output_dir)
-        tokenizer.save_pretrained(args.output_dir)
+        # save for every epoch
+        if  n_gpu > 1 and torch.distributed.get_rank() == 0  or n_gpu <=1 :
+            logging.info("** ** * Saving fine-tuned model ** ** * ")
+            model.save_pretrained(args.output_dir)
+            tokenizer.save_pretrained(args.output_dir)
 
 
 if __name__ == '__main__':
