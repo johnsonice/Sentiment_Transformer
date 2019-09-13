@@ -10,6 +10,6 @@ python ./examples/run_glue.py \
     --max_seq_length 128 \
     --per_gpu_eval_batch_size=8   \
     --per_gpu_train_batch_size=8   \
-    --learning_rate 2e-5 \
+    --learning_rate 5e-5 \
     --num_train_epochs 3.0 \
     --output_dir data/model_weights/SST-2/

@@ -1,11 +1,11 @@
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES=1
 export ROOT_DIR=../src
 cd $ROOT_DIR
 export DATA_DIR=../data/authority_views
 #rm -rf eval
 python run_glue.py \
 --model_type bert \
---model_name_or_path ../data/LM_finetune_Macro/finetuned_lm \
+--model_name_or_path ../data/LM_finetune_Macro/finetuned_lm_customize \
 --task_name AIV \
 --do_train \
 --do_eval \

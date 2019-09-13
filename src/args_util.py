@@ -23,6 +23,8 @@ def parse_args():
                         help="The name of the task to train selected in the list: " + ", ".join(processors.keys()))
     parser.add_argument("--output_dir", default="../data/model_weights/AIV/", type=str, required=False,
                         help="The output directory where the model predictions and checkpoints will be written.")
+    parser.add_argument("--infer_file_name", default="dev", type=str, required=False,
+                        help="file name for infer data")
     
 #    ## Required parameters
 #    parser.add_argument("--data_dir", default=None, type=str, required=True,
