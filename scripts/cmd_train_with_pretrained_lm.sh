@@ -12,7 +12,7 @@ python run_glue.py \
 --data_dir $DATA_DIR/  \
 --output_dir ../data/model_weights/AIV/ \
 --save_steps 50 \
---num_train_epochs 10.0 \
+--num_train_epochs 12.0 \
 --do_lower_case \
 --learning_rate 3e-5 \
 --max_seq_length=256 \

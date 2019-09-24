@@ -19,7 +19,7 @@ python run_glue.py \
 --evaluate_during_training \
 --per_gpu_train_batch_size=8   \
 --per_gpu_eval_batch_size=8   \
---config_name ../custom_config/config.json \
+#--config_name ../custom_config/config.json \
 #--eval_all_checkpoints
 
 
