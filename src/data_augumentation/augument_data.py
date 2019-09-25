@@ -64,7 +64,7 @@ if __name__ =="__main__":
             #df['aug_paras']= df['paragraph'].apply(BT.back_translate,args=(5,False))
         
         res_df = pd.DataFrame(res_overall,columns = ['org_paragraph','paragraph','label'])
-        res_df['label'] = res_df['label'].astype(int)
-        #%%
+        #res_df['label'] = res_df['label'].astype(int)
+
         res_df.to_excel(args.output_dir)
     

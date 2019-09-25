@@ -4,5 +4,5 @@ python pregenerate_training_data.py \
 --bert_model bert-base-uncased \
 --do_lower_case \
 --output_dir $DATA/training/ \
---epochs_to_generate 3 \
+--epochs_to_generate 20 \
 --max_seq_len 256 \

@@ -125,8 +125,10 @@ def main():
     parser = ArgumentParser()
     parser.add_argument('--pregenerated_data', type=Path, required=True)
     parser.add_argument('--output_dir', type=Path, required=True)
-    parser.add_argument("--bert_model", type=str, required=True, help="Bert pre-trained model selected in the list: bert-base-uncased, "
-                             "bert-large-uncased, bert-base-cased, bert-base-multilingual, bert-base-chinese.")
+    #parser.add_argument("--bert_model", type=str, required=True, help="Bert pre-trained model selected in the list: bert-base-uncased, "
+    #                         "bert-large-uncased, bert-base-cased, bert-base-multilingual, bert-base-chinese.")
+    parser.add_argument("--bert_model", default='bert-base-uncased', type=str, required=False,
+                        help="Path to pre-trained model or shortcut name")
     parser.add_argument("--do_lower_case", action="store_true")
     parser.add_argument("--reduce_memory", action="store_true",
                         help="Store training data as on-disc memmaps to massively reduce memory usage")
@@ -321,6 +323,7 @@ def main():
                     scheduler.step()  # Update learning rate schedule
                     optimizer.step()
                     optimizer.zero_grad()
+                    #print('update: setp {}'.format(step+1))
                     global_step += 1
                 
                 # save model every n steps
